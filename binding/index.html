@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Binding</title>
+  </head>
+  <body>
+    <h1>Binding html</h1>
+    <div id="html">
+      <div v-bind:class="classObject">Class Object</div>
+      <div v-bind:class="computedObject">Computed Object</div>
+      <div v-bind:class="[activeClass, errorClass]">Array Object</div>
+      <div v-bind:class="[{real: isReal}, errorClass]">Object Syntax</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#html',
+        data: {
+          classObject: {
+            active: false,
+            hiden: true,
+            'text-danger': true
+          },
+          isReal: true,
+          activeClass: 'active',
+          errorClass: 'error'
+        },
+        computed: {
+          computedObject: function(){
+            return {
+              real: this.isReal
+            }
+          }
+        }
+      })
+    </script>
+    <h1>Binding CSS</h1>
+    <div id="css">
+      <div v-bind:style="{color: activeColor, fontSize: fontSize + 'px'}">Style from data</div>
+      <div v-bind:style="styleObject">Style from styleObject</div>
+      <div v-bind:style="[styleObject, styleOvveriding]">Style from array</div>
+    </div>
+    <script>
+      var vm2 = new Vue({
+        el: '#css',
+        data: {
+          activeColor: 'red',
+          fontSize: 13,
+          styleObject: {
+            color: 'red',
+            fontSize: '18px'
+          },
+          styleOvveriding: {
+            color: 'orange',
+            fontStyle: 'italic'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

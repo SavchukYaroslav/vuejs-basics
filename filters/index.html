@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Filters</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="person in sortArray">
+          {{person.name}}, {{person.age}}
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          array: [
+            {name: 'Yaroslav', age: 20},
+            {name: 'Bohdan', age: 21},
+            {name: 'Alex', age: 19},
+            {name: 'Nick', age: 26}
+          ]
+        },
+        computed: {
+         sortArray: function() {
+           return _.sortBy(this.array, 'name')
+         }
+        }
+      })
+    </script>
+  </body>
+
+</html>

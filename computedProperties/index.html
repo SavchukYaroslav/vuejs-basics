@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Computed Properties</title>
+  </head>
+
+  <body>
+    <div id="demo">{{ fullName }}</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
+    <script>
+       var vm = new Vue({
+        el: '#demo',
+        data: {
+          firstName: 'NoFirst',
+          secondNmae: 'NoSecond'
+        },
+        computed: {
+          fullName: {
+            get: function () {
+             return this.firstName + ' ' + this.lastName
+            },
+            set: function (newVal) {
+              var names = newVal.split(' ')
+              this.firstName = names[0]
+              this.lastName = names[names.length - 1]
+            }
+          }
+        }
+      })
+      vm.fullName = 'First Second Third'
+    </script>
+  </body>
+
+</html>
