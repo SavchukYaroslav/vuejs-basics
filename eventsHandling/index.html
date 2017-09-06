@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events Handling</title>
+  </head>
+  <body>
+    <h1>Click Events</h1>
+    <div id="example">
+      <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+        Submit
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      new Vue({
+        el: '#example',
+        methods: {
+          warn: function (message, event) {
+            console.log(90)
+            if (event) event.preventDefault()
+            alert(message)
+          }
+        }
+      })
+    </script>
+    <h1>Multiple Checkboxes</h1>
+    <div id="example-1">
+      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+      <label for="jack">Jack</label>
+      <input type="checkbox" id="john" value="John" v-model="checkedNames">
+      <label for="john">John</label>
+      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+      <label for="mike">Mike</label>
+      <br>
+      <span>Checked names: {{ checkedNames }}</span>
+    </div>
+    <script>
+      var vm=new Vue({
+        el: '#example-1',
+        data: {
+          checkedNames: []
+        }
+      })
+    </script>
+    <div id="example-2">
+      <h1>Radio Boxes</h1>
+      <input type="radio" id="one" value="One" v-model="picked">
+      <label for="one">One</label>
+      <br>
+      <input type="radio" id="two" value="Two" v-model="picked">
+      <label for="two">Two</label>
+      <br>
+      <span>Picked: {{ picked }}</span>
+    </div>
+    <script>
+      var vm1=new Vue({
+        el: '#example-2',
+        data: {
+          picked: "any"
+        }
+      })
+    </script>
+    <div id="example-3">
+      <h1>Single Select</h1>
+      <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <span>Selected: {{ selected }}</span>
+    </div>
+    <script>
+      new Vue({
+        el: '#example-3',
+        data: {
+          selected: ''
+        }
+      })
+    </script>
+  </body>
+</html>

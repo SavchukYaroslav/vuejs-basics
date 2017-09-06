@@ -6,11 +6,26 @@
 
   <body>
     <div id="app">
-      <ul>
-        <li v-for="person in sortArray">
-          {{person.name}}, {{person.age}}
-        </li>
-      </ul>
+      <h1>v-for with computed property</h1>
+        <ul>
+          <li v-for="person in sortArray">
+            {{ person.name }}, {{ person.age }}
+          </li>
+        </ul>
+      <h1>v-for with index</h1>
+        <ul>
+          <li v-for="(person, index) in array">
+            {{ index }} {{ person.name }}
+          </li>
+        </ul>
+      <h1>v-for with object</h1>
+        <ul>
+          <a v-for="object in objects">
+            <li v-for="(value, key) in object">
+              {{ key }}: {{ value }}
+            </li>
+          </a>
+        </ul>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
@@ -19,10 +34,14 @@
         el: "#app",
         data: {
           array: [
-            {name: 'Yaroslav', age: 20},
-            {name: 'Bohdan', age: 21},
-            {name: 'Alex', age: 19},
-            {name: 'Nick', age: 26}
+            { name: 'Yaroslav', age: 20 },
+            { name: 'Bohdan', age: 21 },
+            { name: 'Alex', age: 19 },
+            { name: 'Nick', age: 26 }
+          ],
+          objects: [
+            { first: 'name', second: 'age' },
+            { third: 'John', forth: 24 }
           ]
         },
         computed: {
