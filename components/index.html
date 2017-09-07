@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Counter</title>
+  </head>
+  <body>
+    <div id="example">
+      <h1>Data Must Be A Function</h1>
+      <simple-counter></simple-counter>
+      <simple-counter></simple-counter>
+      <simple-counter></simple-counter>
+      <br>
+      <h1>Passing Data With Props</h1>
+      <child message="hello!"></child>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      Vue.component('simple-counter', {
+        template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+        data: function () {
+          return {
+            counter: 0
+          }
+        }
+      })
+      Vue.component('child', {
+          // declare the props
+          props: ['message'],
+          // and is also made available in the vm as this.message
+          template: '<span>{{ message }}</span>'
+      })
+      new Vue({
+          el: '#example'
+      })
+    </script>
+  </body>
+</html>
